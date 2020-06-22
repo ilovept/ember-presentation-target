@@ -10,31 +10,31 @@ module.exports = {
   included (app) {
     this.app = app;
 
-    this.options = {}
+    this.settings = {};
 
-    this.options = Object.assign(this.options, app.options.presentationTarget);
+    this.settings = Object.assign(this.settings, app.options.presentationTarget);
 
-    if (typeof this.options.enabled === 'undefined') {
-      this.options.enabled = typeof this.options.target !== 'undefined';
+    if (typeof this.settings.enabled === 'undefined') {
+      this.settings.enabled = typeof this.settings.target !== 'undefined';
     }
 
     return this._super.included.apply(this, arguments);
   },
 
   preprocessTree(type, tree) {
-    if (type !== 'template' || !this.options.enabled) {
+    if (type !== 'template' || !this.settings.enabled) {
       return tree;
     }
 
     let classicTemplateTree = tree.inputNodes[1];
-    classicTemplateTree.srcDir = `${this.app.name}/templates/${this.options.target}`;
+    classicTemplateTree.srcDir = `${this.app.name}/templates/${this.settings.target}`;
 
-    if (typeof this.options.common === 'undefined') {
+    if (typeof this.settings.common === 'undefined') {
       return tree;
     }
 
     let commonTemplates = new Funnel(this.app.trees.app, {
-      srcDir: `templates/${this.options.common}`,
+      srcDir: `templates/${this.settings.common}`,
       destDir: `${this.app.name}/templates`,
       annotation: 'Classic Templates (common)'
     });
