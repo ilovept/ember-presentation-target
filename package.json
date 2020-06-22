@@ -1,16 +1,23 @@
 {
   "name": "ember-presentation-target",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.1.0",
+  "description": "Configure a different template location specific to the target device.",
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ilovept/ember-presentation-target.git"
+  },
   "license": "MIT",
-  "author": "",
+  "author": "Garret Alfert",
   "directories": {
     "doc": "doc",
     "test": "tests"
+  },
+  "homepage": "https://github.com/ilovept/ember-presentation-target",
+  "bugs": {
+    "url": "https://github.com/ilovept/ember-presentation-target/issues"
   },
   "scripts": {
     "build": "ember build --environment=production",

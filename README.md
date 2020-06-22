@@ -1,8 +1,8 @@
 ember-presentation-target
 ==============================================================================
 
-[Short description of the addon.]
-
+Configure a different template location specific to the target device
+(e.g. desktop or mobile).
 
 Compatibility
 ------------------------------------------------------------------------------
