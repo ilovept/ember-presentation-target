@@ -26,22 +26,32 @@ module.exports = {
       return tree;
     }
 
-    let classicTemplateTree = tree.inputNodes[1];
-    classicTemplateTree.srcDir = `${this.app.name}/templates/${this.settings.target}`;
 
-    if (typeof this.settings.common === 'undefined') {
-      return tree;
-    }
 
-    let commonTemplates = new Funnel(this.app.trees.app, {
-      srcDir: `templates/${this.settings.common}`,
+    let nodes = tree.inputNodes;
+
+    let targetTemplates = new Funnel(this.app.trees.app, {
+      srcDir: `templates/${this.settings.target}`,
       destDir: `${this.app.name}/templates`,
-      annotation: 'Classic Templates (common)'
+      annotation: `Classic Templates (${this.settings.target})`
     });
 
-    let merged = mergeTrees([tree, commonTemplates], {
+    nodes.push(targetTemplates);
+
+    if (typeof this.settings.common !== 'undefined') {
+      let commonTemplates = new Funnel(this.app.trees.app, {
+        srcDir: `templates/${this.settings.common}`,
+        destDir: `${this.app.name}/templates`,
+        annotation: `Classic Templates (${this.settings.common})`
+      });
+
+      nodes.push(commonTemplates);
+    }
+
+    let merged = mergeTrees(nodes, {
       overwrite: true,
-      annotation: 'Pod & Classic Templates'
+      description: 'Templates',
+      annotation: 'Templates'
     });
 
     return merged;
