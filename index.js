@@ -28,7 +28,7 @@ module.exports = {
 
 
 
-    let nodes = tree.inputNodes;
+    let nodes = [tree];
 
     let targetTemplates = new Funnel(this.app.trees.app, {
       srcDir: `templates/${this.settings.target}`,
