@@ -1,6 +1,6 @@
 {
   "name": "ember-presentation-target",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Configure a different template location specific to the target device.",
   "keywords": [
     "ember-addon"
